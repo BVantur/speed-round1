@@ -17,27 +17,76 @@ package com.example.androiddevchallenge.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import com.example.androiddevchallenge.R
+
+val fontFamily = FontFamily(
+    fonts = listOf(
+        Font(
+            resId = R.font.nunitosans_bold,
+            style = FontStyle.Normal,
+            weight = FontWeight.Bold
+        ),
+        Font(
+            resId = R.font.nunitosans_light,
+            style = FontStyle.Normal,
+            weight = FontWeight.Light
+        ),
+        Font(
+            resId = R.font.nunitosans_semibold,
+            style = FontStyle.Normal,
+            weight = FontWeight.SemiBold
+        )
+    )
+)
 
 // Set of Material typography styles to start with
 val typography = Typography(
+    h1 = TextStyle(
+        fontSize = 18.sp,
+        letterSpacing = 0.em,
+        fontFamily = fontFamily,
+        fontWeight = FontWeight.Bold
+    ),
+    h2 = TextStyle(
+        fontSize = 14.sp,
+        letterSpacing = 0.15.em,
+        fontFamily = fontFamily,
+        fontWeight = FontWeight.Bold
+    ),
+    subtitle1 = TextStyle(
+        fontSize = 16.sp,
+        letterSpacing = 0.em,
+        fontFamily = fontFamily,
+        fontWeight = FontWeight.Light
+    ),
     body1 = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp
-    )
-        /* Other default text styles to override
+        fontSize = 14.sp,
+        letterSpacing = 0.em,
+        fontFamily = fontFamily,
+        fontWeight = FontWeight.Light,
+    ),
+    body2 = TextStyle(
+        fontSize = 12.sp,
+        letterSpacing = 0.em,
+        fontFamily = fontFamily,
+        fontWeight = FontWeight.Light,
+    ),
     button = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.W500,
-        fontSize = 14.sp
+        fontSize = 12.sp,
+        letterSpacing = 1.em,
+        fontFamily = fontFamily,
+        fontWeight = FontWeight.SemiBold,
     ),
     caption = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 12.sp
+        fontSize = 12.sp,
+        letterSpacing = 0.em,
+        fontFamily = fontFamily,
+        fontWeight = FontWeight.SemiBold,
     )
-    */
 )
