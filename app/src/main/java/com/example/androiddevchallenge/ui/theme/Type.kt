@@ -49,43 +49,43 @@ val fontFamily = FontFamily(
 val typography = Typography(
     h1 = TextStyle(
         fontSize = 18.sp,
-        letterSpacing = 0.em,
+        letterSpacing = 0.sp,
         fontFamily = fontFamily,
         fontWeight = FontWeight.Bold
     ),
     h2 = TextStyle(
         fontSize = 14.sp,
-        letterSpacing = 0.15.em,
+        letterSpacing = 0.15.sp,
         fontFamily = fontFamily,
         fontWeight = FontWeight.Bold
     ),
     subtitle1 = TextStyle(
         fontSize = 16.sp,
-        letterSpacing = 0.em,
+        letterSpacing = 0.sp,
         fontFamily = fontFamily,
-        fontWeight = FontWeight.Light
+        fontWeight = FontWeight.Light,
     ),
     body1 = TextStyle(
         fontSize = 14.sp,
-        letterSpacing = 0.em,
+        letterSpacing = 0.sp,
         fontFamily = fontFamily,
         fontWeight = FontWeight.Light,
     ),
     body2 = TextStyle(
         fontSize = 12.sp,
-        letterSpacing = 0.em,
+        letterSpacing = 0.sp,
         fontFamily = fontFamily,
         fontWeight = FontWeight.Light,
     ),
     button = TextStyle(
         fontSize = 12.sp,
-        letterSpacing = 1.em,
+        letterSpacing = 1.sp,
         fontFamily = fontFamily,
         fontWeight = FontWeight.SemiBold,
     ),
     caption = TextStyle(
         fontSize = 12.sp,
-        letterSpacing = 0.em,
+        letterSpacing = 0.sp,
         fontFamily = fontFamily,
         fontWeight = FontWeight.SemiBold,
     )
