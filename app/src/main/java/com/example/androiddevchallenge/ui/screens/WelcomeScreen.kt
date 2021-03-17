@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.ButtonDefaults.buttonColors
@@ -91,7 +92,7 @@ fun WelcomeScreen() {
                 top.linkTo(logoImage.bottom)
                 start.linkTo(parent.start)
                 end.linkTo(parent.end)
-            },
+            }.paddingFromBaseline(top = 32.dp),
             style = typography.subtitle1, color = MaterialTheme.colors.onPrimary
         )
 
