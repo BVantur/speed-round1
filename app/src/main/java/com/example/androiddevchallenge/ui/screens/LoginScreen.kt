@@ -1,3 +1,18 @@
+/*
+ * Copyright 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.androiddevchallenge.ui.screens
 
 import androidx.compose.foundation.background
@@ -27,7 +42,8 @@ fun LoginScreen() {
             .background(MaterialTheme.colors.background)
     ) {
         val (titleText, emailTextField, passwordTextField, termsText, loginButton) = createRefs()
-        Text(text = "Log in with email",
+        Text(
+            text = "Log in with email",
             color = MaterialTheme.colors.onPrimary,
             style = MaterialTheme.typography.h1,
             modifier = Modifier
@@ -37,8 +53,10 @@ fun LoginScreen() {
                     end.linkTo(parent.end)
                     width = Dimension.preferredWrapContent
                 }
-                .paddingFromBaseline(top = 184.dp))
-        OutlinedTextField(value = "",
+                .paddingFromBaseline(top = 184.dp)
+        )
+        OutlinedTextField(
+            value = "",
             onValueChange = { /*TODO*/ },
             placeholder = { Text(text = "Email address") },
             textStyle = MaterialTheme.typography.body1,
@@ -49,8 +67,10 @@ fun LoginScreen() {
                     end.linkTo(parent.end)
                 }
                 .fillMaxWidth()
-                .padding(start = 16.dp, end = 16.dp))
-        OutlinedTextField(value = "",
+                .padding(start = 16.dp, end = 16.dp)
+        )
+        OutlinedTextField(
+            value = "",
             onValueChange = { /*TODO*/ },
             placeholder = { Text(text = "Password (8+ characters)") },
             textStyle = MaterialTheme.typography.body1,
@@ -61,7 +81,8 @@ fun LoginScreen() {
                     end.linkTo(parent.end)
                 }
                 .fillMaxWidth()
-                .padding(start = 16.dp, end = 16.dp))
+                .padding(start = 16.dp, end = 16.dp)
+        )
         Text(
             text = "By clicking below, you agree to our Terms of Use and consent to our Privacy Policy.",
             color = MaterialTheme.colors.onPrimary,
@@ -96,7 +117,6 @@ fun LoginScreen() {
                 color = MaterialTheme.colors.onSecondary
             )
         }
-
     }
 }
 
