@@ -18,7 +18,16 @@ package com.example.androiddevchallenge
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.runtime.Composable
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.androiddevchallenge.ui.ROUTE_HOME
+import com.example.androiddevchallenge.ui.ROUTE_LOGIN
+import com.example.androiddevchallenge.ui.ROUTE_WELCOME
+import com.example.androiddevchallenge.ui.screens.HomeScreen
 import com.example.androiddevchallenge.ui.screens.LoginScreen
+import com.example.androiddevchallenge.ui.screens.WelcomeScreen
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 class MainActivity : AppCompatActivity() {
@@ -27,7 +36,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyTheme {
-                LoginScreen()
+                MyApp()
+            }
+        }
+    }
+
+    @Composable
+    private fun MyApp() {
+        val navController = rememberNavController()
+
+        NavHost(navController = navController, startDestination = ROUTE_WELCOME) {
+            composable(ROUTE_LOGIN) {
+                LoginScreen(navController)
+            }
+            composable(ROUTE_WELCOME) {
+                WelcomeScreen(navController = navController)
+            }
+            composable(ROUTE_HOME) {
+                HomeScreen(navController = navController)
             }
         }
     }

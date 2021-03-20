@@ -32,10 +32,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import androidx.navigation.NavController
+import androidx.navigation.compose.navigate
+import androidx.navigation.compose.popUpTo
+import com.example.androiddevchallenge.ui.ROUTE_HOME
+import com.example.androiddevchallenge.ui.ROUTE_WELCOME
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavController?) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
@@ -98,7 +103,11 @@ fun LoginScreen() {
                 .padding(horizontal = 16.dp)
         )
         Button(
-            onClick = {},
+            onClick = {
+                navController?.navigate(ROUTE_HOME) {
+                    popUpTo(ROUTE_WELCOME) { inclusive = true }
+                }
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(start = 16.dp, end = 16.dp)
@@ -124,7 +133,7 @@ fun LoginScreen() {
 @Composable
 fun DarkPreviewLoginScreen() {
     MyTheme(darkTheme = true) {
-        LoginScreen()
+        LoginScreen(null)
     }
 }
 
@@ -132,6 +141,6 @@ fun DarkPreviewLoginScreen() {
 @Composable
 fun LightPreviewLoginScreen() {
     MyTheme {
-        LoginScreen()
+        LoginScreen(null)
     }
 }
