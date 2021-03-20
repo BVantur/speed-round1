@@ -38,7 +38,6 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.ui.ROUTE_LOGIN
-import com.example.androiddevchallenge.ui.ROUTE_WELCOME
 import com.example.androiddevchallenge.ui.components.ThemedImage
 import com.example.androiddevchallenge.ui.components.ThemedText
 import com.example.androiddevchallenge.ui.theme.MyTheme
