@@ -34,7 +34,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import androidx.navigation.NavController
+import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.R
+import com.example.androiddevchallenge.ui.ROUTE_LOGIN
+import com.example.androiddevchallenge.ui.ROUTE_WELCOME
 import com.example.androiddevchallenge.ui.components.ThemedImage
 import com.example.androiddevchallenge.ui.components.ThemedText
 import com.example.androiddevchallenge.ui.theme.MyTheme
@@ -43,7 +47,7 @@ import com.example.androiddevchallenge.ui.theme.typography
 import com.example.androiddevchallenge.ui.theme.white
 
 @Composable
-fun WelcomeScreen() {
+fun WelcomeScreen(navController: NavController?) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
@@ -118,7 +122,9 @@ fun WelcomeScreen() {
         }
 
         TextButton(
-            onClick = { },
+            onClick = {
+                navController?.navigate(ROUTE_LOGIN)
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(start = 16.dp, end = 16.dp)
@@ -139,7 +145,7 @@ fun WelcomeScreen() {
 @Composable
 fun DarkPreviewWelcomeScreen() {
     MyTheme(darkTheme = true) {
-        WelcomeScreen()
+        WelcomeScreen(null)
     }
 }
 
@@ -147,6 +153,6 @@ fun DarkPreviewWelcomeScreen() {
 @Composable
 fun LightPreviewWelcomeScreen() {
     MyTheme {
-        WelcomeScreen()
+        WelcomeScreen(null)
     }
 }

@@ -52,6 +52,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import androidx.navigation.NavController
 import com.example.androiddevchallenge.model.homeGardenItems
 import com.example.androiddevchallenge.model.themes
 import com.example.androiddevchallenge.ui.components.HomeGardenCard
@@ -59,7 +60,7 @@ import com.example.androiddevchallenge.ui.components.ThemeCard
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController?) {
     Scaffold(bottomBar = { BottomBar() }) {
         ConstraintLayout {
             val (searchTextField, browseThemeText, themeList, designGardenText, designGardenList, filterButton) = createRefs()
@@ -214,7 +215,7 @@ private fun BottomBar() {
 @Composable
 fun DarkPreviewHomeScreen() {
     MyTheme(darkTheme = true) {
-        HomeScreen()
+        HomeScreen(null)
     }
 }
 
@@ -222,6 +223,6 @@ fun DarkPreviewHomeScreen() {
 @Composable
 fun LightPreviewHomeScreen() {
     MyTheme {
-        HomeScreen()
+        HomeScreen(null)
     }
 }
