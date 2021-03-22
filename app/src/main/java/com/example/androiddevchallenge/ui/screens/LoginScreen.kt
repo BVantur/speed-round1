@@ -117,14 +117,16 @@ fun LoginScreen(navController: NavController?) {
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp)
             )
-            AnnotatedClickableText(modifier = Modifier
-                .constrainAs(termsText) {
-                    top.linkTo(passwordTextField.bottom, margin = 8.dp)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                }
-                .paddingFromBaseline(top = 24.dp, bottom = 16.dp)
-                .padding(horizontal = 16.dp))
+            AnnotatedClickableText(
+                modifier = Modifier
+                    .constrainAs(termsText) {
+                        top.linkTo(passwordTextField.bottom, margin = 8.dp)
+                        start.linkTo(parent.start)
+                        end.linkTo(parent.end)
+                    }
+                    .paddingFromBaseline(top = 24.dp, bottom = 16.dp)
+                    .padding(horizontal = 16.dp)
+            )
             Button(
                 onClick = {
                     navController?.navigate(ROUTE_HOME) {
@@ -205,7 +207,7 @@ fun AnnotatedClickableText(modifier: Modifier = Modifier) {
                 fontFamily = fontFamily,
                 fontWeight = FontWeight.Light,
                 fontSize = 12.sp,
-                        color = MaterialTheme.colors.onSurface
+                color = MaterialTheme.colors.onSurface
             )
         ) {
             append(" and consent")
@@ -243,7 +245,6 @@ fun AnnotatedClickableText(modifier: Modifier = Modifier) {
         pop()
     }
 
-
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
 
         ClickableText(
@@ -272,6 +273,5 @@ fun AnnotatedClickableText(modifier: Modifier = Modifier) {
                 }
             }
         )
-
     }
 }

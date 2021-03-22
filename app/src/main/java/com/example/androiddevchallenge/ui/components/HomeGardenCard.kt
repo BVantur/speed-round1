@@ -41,10 +41,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.transform.RoundedCornersTransformation
 import com.example.androiddevchallenge.model.HomeGardenItem
 import com.example.androiddevchallenge.model.homeGardenItems
-import com.example.androiddevchallenge.ui.screens.HomeScreen
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import dev.chrisbanes.accompanist.coil.CoilImage
 
@@ -53,7 +51,8 @@ fun HomeGardenCard(item: HomeGardenItem) {
     Column(
         Modifier
             .fillMaxWidth()
-            .height(64.dp)) {
+            .height(64.dp)
+    ) {
         Row(
             Modifier
                 .fillMaxWidth()
