@@ -23,6 +23,7 @@ import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,9 +36,8 @@ import dev.chrisbanes.accompanist.coil.CoilImage
 fun ThemeCard(item: Theme, modifier: Modifier = Modifier) {
     Card(
         modifier = modifier,
-        backgroundColor = MaterialTheme.colors.surface,
-        elevation = 1.dp,
-        shape = MaterialTheme.shapes.small
+        shape = MaterialTheme.shapes.small,
+        backgroundColor = MaterialTheme.colors.surface
     ) {
         Column(
             Modifier

@@ -15,6 +15,7 @@
  */
 package com.example.androiddevchallenge.ui.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
@@ -23,6 +24,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -33,6 +35,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
@@ -60,98 +63,106 @@ import com.example.androiddevchallenge.ui.components.ThemeCard
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 @Composable
-fun HomeScreen(navController: NavController?) {
+fun HomeScreen() {
     Scaffold(bottomBar = { BottomBar() }) {
-        ConstraintLayout {
-            val (searchTextField, browseThemeText, themeList, designGardenText, designGardenList, filterButton) = createRefs()
+        Surface {
+            ConstraintLayout(Modifier.background(MaterialTheme.colors.background)) {
+                val (searchTextField, browseThemeText, themeList, designGardenText, designGardenList, filterButton) = createRefs()
 
-            var searchInput by remember { mutableStateOf("") }
-            OutlinedTextField(
-                value = searchInput,
-                leadingIcon = { Icon(Icons.Outlined.Search, "Search") },
-                onValueChange = {
-                    searchInput = it
-                },
-                placeholder = { Text(text = "Search") },
-                textStyle = MaterialTheme.typography.body1,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .constrainAs(searchTextField) {
-                        top.linkTo(parent.top, margin = 8.dp)
+                var searchInput by remember { mutableStateOf("") }
+                OutlinedTextField(
+                    value = searchInput,
+                    leadingIcon = {
+                        Icon(
+                            Icons.Outlined.Search,
+                            "Search",
+                            modifier = Modifier.size(18.dp)
+                        )
+                    },
+                    onValueChange = {
+                        searchInput = it
+                    },
+                    placeholder = { Text(text = "Search") },
+                    textStyle = MaterialTheme.typography.body1,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .constrainAs(searchTextField) {
+                            top.linkTo(parent.top, margin = 40.dp)
+                        }
+                        .padding(start = 16.dp, end = 16.dp)
+                )
+                Text(
+                    text = "Browse themes",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 8.dp)
+                        .paddingFromBaseline(top = 32.dp)
+                        .constrainAs(browseThemeText) {
+                            top.linkTo(searchTextField.bottom)
+                        },
+                    style = MaterialTheme.typography.h1,
+                    textAlign = TextAlign.Start
+                )
+                LazyRow(
+                    Modifier
+                        .fillMaxWidth()
+                        .height(136.dp)
+                        .constrainAs(themeList) {
+                            top.linkTo(browseThemeText.bottom)
+                        },
+                    contentPadding = PaddingValues(16.dp)
+                ) {
+                    itemsIndexed(themes) { index, item ->
+                        ThemeCard(
+                            item = item,
+                            Modifier
+                                .padding(start = if (index == 0) 0.dp else 8.dp)
+                                .fillMaxHeight()
+                                .aspectRatio(1.2f)
+                        )
                     }
-                    .padding(start = 16.dp, end = 16.dp)
-            )
-            Text(
-                text = "Browse themes",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 8.dp)
-                    .paddingFromBaseline(top = 32.dp)
-                    .constrainAs(browseThemeText) {
-                        top.linkTo(searchTextField.bottom)
-                    },
-                style = MaterialTheme.typography.h1,
-                textAlign = TextAlign.Start
-            )
-            LazyRow(
-                Modifier
-                    .fillMaxWidth()
-                    .height(136.dp)
-                    .constrainAs(themeList) {
-                        top.linkTo(browseThemeText.bottom)
-                    },
-                contentPadding = PaddingValues(16.dp)
-            ) {
-                itemsIndexed(themes) { index, item ->
-                    ThemeCard(
-                        item = item,
-                        Modifier
-                            .padding(start = if (index == 0) 0.dp else 8.dp)
-                            .fillMaxHeight()
-                            .aspectRatio(1.2f)
-                    )
                 }
-            }
-            Text(
-                text = "Design your home garden",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 8.dp)
-                    .constrainAs(designGardenText) {
-                        top.linkTo(themeList.bottom)
-                    }
-                    .paddingFromBaseline(top = 40.dp),
-                style = MaterialTheme.typography.h1,
-                textAlign = TextAlign.Start
-            )
+                Text(
+                    text = "Design your home garden",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 8.dp)
+                        .constrainAs(designGardenText) {
+                            top.linkTo(themeList.bottom)
+                        }
+                        .paddingFromBaseline(top = 40.dp),
+                    style = MaterialTheme.typography.h1,
+                    textAlign = TextAlign.Start
+                )
 
-            Icon(
-                Icons.Filled.FilterList,
-                "Sort",
-                modifier = Modifier
-                    .padding(end = 16.dp)
-                    .height(24.dp)
-                    .aspectRatio(1f)
-                    .clickable { }
-                    .constrainAs(filterButton) {
-                        top.linkTo(designGardenText.top)
-                        bottom.linkTo(designGardenText.bottom)
-                        end.linkTo(parent.end)
+                Icon(
+                    Icons.Filled.FilterList,
+                    "Sort",
+                    modifier = Modifier
+                        .padding(end = 16.dp)
+                        .height(24.dp)
+                        .aspectRatio(1f)
+                        .clickable { }
+                        .constrainAs(filterButton) {
+                            top.linkTo(designGardenText.top)
+                            bottom.linkTo(designGardenText.bottom)
+                            end.linkTo(parent.end)
+                        }
+                )
+                LazyColumn(
+                    Modifier
+                        .fillMaxWidth()
+                        .constrainAs(designGardenList) {
+                            top.linkTo(designGardenText.bottom)
+                            bottom.linkTo(parent.bottom)
+                            height = Dimension.preferredWrapContent
+                        }
+                        .fillMaxHeight(),
+                    contentPadding = PaddingValues(top = 16.dp, bottom = 64.dp)
+                ) {
+                    items(homeGardenItems) { item ->
+                        HomeGardenCard(item)
                     }
-            )
-            LazyColumn(
-                Modifier
-                    .fillMaxWidth()
-                    .constrainAs(designGardenList) {
-                        top.linkTo(designGardenText.bottom)
-                        bottom.linkTo(parent.bottom)
-                        height = Dimension.preferredWrapContent
-                    }
-                    .fillMaxHeight(),
-                contentPadding = PaddingValues(top = 16.dp, bottom = 64.dp)
-            ) {
-                items(homeGardenItems) { item ->
-                    HomeGardenCard(item)
                 }
             }
         }
@@ -215,7 +226,7 @@ private fun BottomBar() {
 @Composable
 fun DarkPreviewHomeScreen() {
     MyTheme(darkTheme = true) {
-        HomeScreen(null)
+        HomeScreen()
     }
 }
 
@@ -223,6 +234,6 @@ fun DarkPreviewHomeScreen() {
 @Composable
 fun LightPreviewHomeScreen() {
     MyTheme {
-        HomeScreen(null)
+        HomeScreen()
     }
 }

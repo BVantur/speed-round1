@@ -25,6 +25,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.ButtonDefaults.buttonColors
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
@@ -47,10 +48,12 @@ import com.example.androiddevchallenge.ui.theme.white
 
 @Composable
 fun WelcomeScreen(navController: NavController?) {
+    Surface(modifier = Modifier
+        .fillMaxSize(), color = MaterialTheme.colors.primary) {
+
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colors.primary)
     ) {
         val (backgroundImage, illosImage, logoImage, introText, createAccountButton, loginButton) = createRefs()
         val topGuideline = createGuidelineFromTop(72.dp)
@@ -91,12 +94,14 @@ fun WelcomeScreen(navController: NavController?) {
         )
         Text(
             "Beautiful home garden solution",
-            modifier = Modifier.constrainAs(introText) {
-                top.linkTo(logoImage.bottom)
-                start.linkTo(parent.start)
-                end.linkTo(parent.end)
-            }.paddingFromBaseline(top = 32.dp),
-            style = typography.subtitle1, color = MaterialTheme.colors.onPrimary
+            modifier = Modifier
+                .constrainAs(introText) {
+                    top.linkTo(logoImage.bottom)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                }
+                .paddingFromBaseline(top = 32.dp, bottom = 40.dp),
+            style = typography.subtitle1,
         )
 
         Button(
@@ -105,7 +110,7 @@ fun WelcomeScreen(navController: NavController?) {
                 .fillMaxWidth()
                 .padding(start = 16.dp, end = 16.dp)
                 .constrainAs(createAccountButton) {
-                    top.linkTo(introText.bottom, margin = 48.dp)
+                    top.linkTo(introText.bottom)
                     start.linkTo(parent.start)
                     height = Dimension.value(48.dp)
                     end.linkTo(parent.end)
@@ -116,7 +121,7 @@ fun WelcomeScreen(navController: NavController?) {
             Text(
                 "Create account",
                 style = MaterialTheme.typography.button,
-                color = MaterialTheme.colors.onSecondary
+//                color = MaterialTheme.colors.onSecondary
             )
         }
 
@@ -124,6 +129,7 @@ fun WelcomeScreen(navController: NavController?) {
             onClick = {
                 navController?.navigate(ROUTE_LOGIN)
             },
+            shape = MaterialTheme.shapes.medium,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(start = 16.dp, end = 16.dp)
@@ -135,8 +141,14 @@ fun WelcomeScreen(navController: NavController?) {
                 },
             colors = ButtonDefaults.textButtonColors(contentColor = MaterialTheme.colors.onPrimary)
         ) {
-            ThemedText("Log in", darkColor = white, lightColor = pink900)
+            Text(
+                "Log in",
+                style = MaterialTheme.typography.button,
+//                color = MaterialTheme.colors.onSecondary
+            )
         }
+    }
+
     }
 }
 

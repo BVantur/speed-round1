@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                 WelcomeScreen(navController = navController)
             }
             composable(ROUTE_HOME) {
-                HomeScreen(navController = navController)
+                HomeScreen()
             }
         }
     }
