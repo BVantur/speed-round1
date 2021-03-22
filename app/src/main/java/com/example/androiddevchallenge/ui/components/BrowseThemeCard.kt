@@ -27,7 +27,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.model.Theme
 import dev.chrisbanes.accompanist.coil.CoilImage
 
@@ -35,9 +34,8 @@ import dev.chrisbanes.accompanist.coil.CoilImage
 fun ThemeCard(item: Theme, modifier: Modifier = Modifier) {
     Card(
         modifier = modifier,
-        backgroundColor = MaterialTheme.colors.surface,
-        elevation = 1.dp,
-        shape = MaterialTheme.shapes.small
+        shape = MaterialTheme.shapes.small,
+        backgroundColor = MaterialTheme.colors.surface
     ) {
         Column(
             Modifier
